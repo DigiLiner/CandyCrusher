@@ -36,6 +36,36 @@ public class CandyArray {
 		int g2Row = g2Candy.Row;
 		int g2Col = g2Candy.Column;
 
+		var temp = candies[g1Row, g1Col];
+		candies [g1Row, g1Col] = candies [g2Row, g2Col];
+		candies [g2Row, g2Col] = temp;
+
+		Candy.SwapRowColumn (g1Candy, g2Candy);
 	}
 
+	//
+	public void UndoSwap() {
+		Swap (backup1, backup2);
+	}
+
+	private IEnumerable<GameObject> GetMatchesHorizontally(GameObject go) {
+		List<GameObject> matches = new List<GameObject> ();
+		matches.Add (go);
+
+		var candy = go.GetComponent<Candy> ();
+
+		// search left 
+		if (candy.Column != 0) {
+			for (int col = candy.Column; col >= 0; col--) {
+				if (candies [candy.Row, col].GetComponent<Candy> ().IsSameType (candy)) {
+					matches.Add (candies [candy.Row, col]);
+				} else {
+					break;
+				}
+			}
+		}
+
+
+			
+	}
 }
