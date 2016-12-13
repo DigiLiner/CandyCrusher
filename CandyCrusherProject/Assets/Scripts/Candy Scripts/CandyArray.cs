@@ -60,12 +60,67 @@ public class CandyArray {
 				if (candies [candy.Row, col].GetComponent<Candy> ().IsSameType (candy)) {
 					matches.Add (candies [candy.Row, col]);
 				} else {
+					// no need to go forward if there's already no match
 					break;
 				}
 			}
 		}
 
+		// search right
+		if (candy.Column != GameVariables.Columns - 1) {
+			for (int col = candy.Column+1; col < GameVariables.Columns; col++) {
+				if (candies [candy.Row, col].GetComponent<Candy> ().IsSameType (candy)) {
+					matches.Add (candies [candy.Row, col]);
+				} else {
+					// no need to go forward if there's already no match
+					break;
+				}
+			}
+		}
 
+		if (matches.Count < GameVariables.MinimumMatches) {
+			matches.Clear ();
+		}
 			
+		// ignore duplicated objects
+		return matches.Distinct ();
+	}
+
+	private IEnumerable<GameObject> GetMatchesVertically(GameObject go) {
+		List<GameObject> matches = new List<GameObject> ();
+		matches.Add (go);
+
+		var candy = go.GetComponent<Candy> ();
+
+		// search bottom 
+		if (candy.Row != 0) {
+			for (int row = candy.Row - 1 ; row >= 0; row--) {
+				if (candies [row, candy.Column].GetComponent<Candy> ().IsSameType (candy)) {
+					matches.Add (candies [row, candy.Column]);
+				} else {
+					// no need to go forward if there's already no match
+					break;
+				}
+			}
+		}
+
+		// search top
+		if (candy.Row != GameVariables.Rows - 1) {
+			for (int row = candy.Row+1; row < GameVariables.Rows; row++) {
+				if (candies [row, candy.Column].GetComponent<Candy> ().IsSameType (candy)) {
+					matches.Add (candies [row, candy.Column]);
+				} else {
+					// no need to go forward if there's already no match
+					break;
+				}
+			}
+		}
+
+		if (matches.Count < GameVariables.MinimumMatches) {
+			matches.Clear ();
+		}
+
+		// ignore duplicated objects
+		return matches.Distinct ();
 	}
 }
