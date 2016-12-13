@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BonusUtilities\BonusUtilities.cs" />
+     <Compile Include="Assets\Scripts\Bonus Utilities\BonusUtilities.cs" />
+     <Compile Include="Assets\Scripts\Candy Scripts\Candy.cs" />
+     <Compile Include="Assets\Scripts\Game Variables\GameVariables.cs" />
      <None Include="Assets\Plugins\GoKit\easing\easeEquationsLicense.txt" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>

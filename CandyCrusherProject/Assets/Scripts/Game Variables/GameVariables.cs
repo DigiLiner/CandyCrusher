@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BonusUtilities : MonoBehaviour {
+public class GameVariables : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
