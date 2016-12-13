@@ -123,4 +123,33 @@ public class CandyArray {
 		// ignore duplicated objects
 		return matches.Distinct ();
 	}
+
+	private bool ContainsDestroyWholeRowColumnBonus(IEnumerable<GameObject> matches) {
+		if (matches.Count() >= GameVariables.MinimumMatches) {
+			foreach(var item in matches) {
+				if(BonusTypeChecker.ContainsDestroyWholeRowColumn(item.GetComponent<Candy>().Bonus) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private IEnumerable<GameObject> GetEntireRow(GameObject go) {
+		List<GameObject> matches = new List<GameObject> ();
+		int row = go.GetComponent<Candy> ().Row;
+		for (int col = 0; col < GameVariables.Columns; col++) {
+			matches.Add (candies [row, col]);
+		}
+		return matches;
+	}
+
+	private IEnumerable<GameObject> GetEntireColumn(GameObject go) {
+		List<GameObject> matches = new List<GameObject> ();
+		int col = go.GetComponent<Candy> ().Column;
+		for (int row = 0; row < GameVariables.Rows; row++) {
+			matches.Add (candies [row, col]);
+		}
+		return matches;
+	}
 }
