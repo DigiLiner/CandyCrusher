@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bonus Utilities\BonusUtilities.cs" />
      <Compile Include="Assets\Scripts\Candy Scripts\Candy.cs" />
+     <Compile Include="Assets\Scripts\Candy Scripts\CandyArray.cs" />
      <Compile Include="Assets\Scripts\Game Variables\GameVariables.cs" />
      <Compile Include="Assets\Scripts\Match Checker Script\NewBehaviourScript.cs" />
      <None Include="Assets\Plugins\GoKit\easing\easeEquationsLicense.txt" />
