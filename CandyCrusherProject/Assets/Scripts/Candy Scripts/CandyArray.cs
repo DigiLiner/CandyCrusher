@@ -127,7 +127,7 @@ public class CandyArray {
 	private bool ContainsDestroyWholeRowColumnBonus(IEnumerable<GameObject> matches) {
 		if (matches.Count() >= GameVariables.MinimumMatches) {
 			foreach(var item in matches) {
-				if(BonusTypeChecker.ContainsDestroyWholeRowColumn(item.GetComponent<Candy>().Bonus) {
+				if(BonusTypeChecker.ContainsDestroyWholeRowColumn(item.GetComponent<Candy>().Bonus)) {
 					return true;
 				}
 			}
@@ -151,5 +151,36 @@ public class CandyArray {
 			matches.Add (candies [row, col]);
 		}
 		return matches;
+	}
+	
+	public void Remove(GameObject item) {
+		candies [item.GetComponent<Candy> ().Row, item.GetComponent<Candy> ().Column] = null;
+	}
+
+	public AlteredCandyInfo Collapse(IEnumerable<int> columns) {
+		AlteredCandyInfo collapseInfo = new AlteredCandyInfo ();
+
+		foreach(var column in columns) {
+			for(int row=0; row<GameVariables.Rows-1;row++) {
+				if(candies[row, column] == null) {
+					for(int row2 = row + 1; row2 < GameVariables.Rows; row2++){
+						if(candies[row2, column]!=null){
+							candies [row, column] = candies [row2, column];
+							candies [row2, column] = null;
+							if (row2 - row > collapseInfo.maxDistance)
+								collapseInfo.maxDistance = row2 - row;
+							candies [row, column].GetComponent<Candy> ().Row = row;
+							candies [row, column].GetComponent<Candy> ().Column = column;
+							collapseInfo.AddCandy (candies [row, column]);
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		return collapseInfo;
+
+
 	}
 }
