@@ -157,6 +157,7 @@ public class CandyArray {
 		candies [item.GetComponent<Candy> ().Row, item.GetComponent<Candy> ().Column] = null;
 	}
 
+	// shift all the candies in one column down if some of the candies of that column exploded
 	public AlteredCandyInfo Collapse(IEnumerable<int> columns) {
 		AlteredCandyInfo collapseInfo = new AlteredCandyInfo ();
 
@@ -178,9 +179,17 @@ public class CandyArray {
 				}
 			}
 		}
-
 		return collapseInfo;
+	}
 
+	public IEnumerable<CandyInfo> GetEmptyItemOnColumn(int column){
+		List<CandyInfo> emptyItems = new List<CandyInfo> ();
 
+		for(int row=0;row<GameVariables.Rows;row++){
+			if(candies[row,column] == null){
+				emptyItems.Add (new CandyInfo{ Row = row, Column = column });
+			}
+		}
+		return emptyItems;
 	}
 }

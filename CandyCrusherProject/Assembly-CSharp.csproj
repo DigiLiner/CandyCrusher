@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Candy Scripts\CandyInfo.cs" />
      <Compile Include="Assets\Scripts\Game Variables\GameVariables.cs" />
      <Compile Include="Assets\Scripts\Match Checker Script\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\Matches Info\MatchesInfo.cs" />
      <None Include="Assets\Plugins\GoKit\easing\easeEquationsLicense.txt" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
