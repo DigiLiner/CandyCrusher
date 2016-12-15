@@ -192,4 +192,18 @@ public class CandyArray {
 		}
 		return emptyItems;
 	}
+
+	public MatchesInfo GetMatches(GameObject go){
+		MatchesInfo matchesInfo = new MatchesInfo ();
+
+		var horizontalMatches = GetMatchesHorizontally (go);
+		if(ContainsDestroyWholeRowColumnBonus(horizontalMatches)){
+			horizontalMatches = GetEntireRow (go);
+			if(!BonusTypeChecker.ContainsDestroyWholeRowColumn(matchesInfo.BonusesContained)){
+				matchesInfo.BonusesContained = BonusType.DestroyWholeRowColumn;
+			}
+		}
+
+		return matchesInfo;
+	}
 }
