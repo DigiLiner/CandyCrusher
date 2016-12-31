@@ -51,7 +51,7 @@
      <Compile Include="Assets\Scripts\Candy Scripts\CandyArray.cs" />
      <Compile Include="Assets\Scripts\Candy Scripts\CandyInfo.cs" />
      <Compile Include="Assets\Scripts\Game Variables\GameVariables.cs" />
-     <Compile Include="Assets\Scripts\Match Checker Script\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\Match Checker Script\MatchChecker.cs" />
      <Compile Include="Assets\Scripts\Matches Info\MatchesInfo.cs" />
      <None Include="Assets\Plugins\GoKit\easing\easeEquationsLicense.txt" />
  <Reference Include="UnityEngine.Networking">

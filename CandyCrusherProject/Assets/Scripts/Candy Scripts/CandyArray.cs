@@ -203,7 +203,29 @@ public class CandyArray {
 				matchesInfo.BonusesContained = BonusType.DestroyWholeRowColumn;
 			}
 		}
+		matchesInfo.AddObjectRange (horizontalMatches);
+
+		var verticalMatches = GetMatchesVertically (go);
+		if(ContainsDestroyWholeRowColumnBonus(verticalMatches)){
+			verticalMatches = GetEntireColumn(go);
+			if(!BonusTypeChecker.ContainsDestroyWholeRowColumn(matchesInfo.BonusesContained)){
+				matchesInfo.BonusesContained = BonusType.DestroyWholeRowColumn;
+			}
+		}
+		matchesInfo.AddObjectRange (verticalMatches);
 
 		return matchesInfo;
 	}
+
+	public IEnumerable<GameObject> GetMatches(IEnumerable<GameObject> gos){
+		List<GameObject> matches = new List<GameObject> ();
+		foreach(var go in gos){
+			matches.AddRange (GetMatches(go).MatchedCandy);
+		}
+
+		return matches.Distinct ();
+	}
+
+
+
 }
